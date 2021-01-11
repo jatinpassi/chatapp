@@ -102,3 +102,11 @@ dist
 
 # TernJS port file
 .tern-port
+
+# server
+/server/node_modules
+
+# Angular app
+/chatapp/node_modules
+/chatapp/.gitignore
+
