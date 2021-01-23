@@ -75,6 +75,7 @@ const gameRooms = ["rocket league","csgo","bt1"]
 
 io.of("/message").on("connection", socket => {
   socket.on("joinRoom", (room) => {
+    
     if (!!gameRooms.includes(room)) {
       socket.join(room);
       return socket.emit("success",`You have successfully joined ${room}`)

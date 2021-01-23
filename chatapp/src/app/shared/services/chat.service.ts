@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { Socket } from 'ngx-socket-io';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class ChatService {
-  readonly url = 'http://localhost:3000/message';
   socket: any;
-  constructor() {
-    this.socket = io(this.url);
-  }
-  joinRoom(roomName: string) {
+  constructor() {}
+  joinRoom(roomName: string, path: string) {
+    this.socket = io(`${environment.host}/${path}`);
     this.socket.emit('joinRoom', roomName);
     return new Observable((subscriber) => {
       this.socket.on('success', (data: any) => {
