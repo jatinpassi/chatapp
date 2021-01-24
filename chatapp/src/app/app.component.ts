@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ChatService } from './shared/services/chat.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +7,6 @@ import { ChatService } from './shared/services/chat.service';
 })
 export class AppComponent implements OnInit {
   title = 'chatapp';
-  constructor(private _chatService: ChatService) {}
-  ngOnInit() {
-    this._chatService
-      .joinRoom('csgo', 'message')
-      .subscribe((data) => console.log(data));
-  }
+  constructor() {}
+  ngOnInit() {}
 }
