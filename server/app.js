@@ -3,6 +3,9 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var cors = require('cors')
+require('dotenv').config()
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -19,6 +22,8 @@ var io = require('socket.io')(server, {
   }});
 
 
+//cors
+app.use(cors())
 
 
 // view engine setup
@@ -27,10 +32,7 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(function(req, res, next){
-  res.io = io;
-  next();
-});
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
